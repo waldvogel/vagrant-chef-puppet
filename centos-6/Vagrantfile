@@ -1,0 +1,9 @@
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+
+Vagrant.configure("2") do |config|
+  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  config.vm.provider "docker" do |d|
+    d.image = "waldvogel/vagrant-chef-puppet:centos-6"
+    d.has_ssh = true
+  end
+end
